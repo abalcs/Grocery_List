@@ -1,10 +1,10 @@
 const express = require('express');
 const path = require('path');
-// const routes = require('./routes/api_routes');
-// const db = require('./config/connection');
+const routes = require('./routes/api_routes');
+const db = require('./config/connection');
 // require('dotenv').config();
 // Heroku 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // express returns an Object
 const app = express(); // instance = Object
@@ -16,9 +16,9 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// routes(app);
+routes(app);
 
-// db.once('open', () => {
+db.once('open', () => {
   // Start the Server
   app.listen(PORT, () => {console.log(`Server running on port ${PORT}!`);});
-// }); // open // object that gives you some methods to test or check our connection
+}); // open // object that gives you some methods to test or check our connection

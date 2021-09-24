@@ -1,0 +1,16 @@
+{
+  "name": "grocery_list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "concurrently": "^6.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"cd server && node server.js\" \"cd client && npm run start\""
+  },
+  "author": "Alan Balcom",
+  "license": "MIT"
+}
