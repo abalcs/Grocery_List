@@ -1,29 +1,32 @@
 const Grocery = require('../models/Grocery');
 
 function routeCreate(app) {
-    app.post('api/grocery', (req, res) => {
+    app.post('/api/groceries', (req, res) => {
         Grocery.create(req.body)
         .then(grocery => {
             res.send('Completed');
         });
     });
 
-    app.get('api/groceries', (req, res) => {
+    app.get('/api/groceries', (req, res) => {
         Grocery.find()
         .then((groceries) => {
             res.send(groceries);
         });
     });
 
-    app.delete('api/groceries', (req, res) => {
+    app.delete('/api/groceries', (req, res) => {
         Grocery.deleteOne(req.body)
         .then(() => {
-            res.status(200).send('Completed');
+            res.status(200).send('Deleted');
         });
     });
 
-    app.put('api/groceries', (req, res) => {
-        console.log(req.body);
+    app.put('/api/groceries', (req, res) => {
+        Grocery.findOneAndReplace(req.body)
+        .then(() => {
+            res.status(200).send('Replaced')
+        })
     });
 }
 
