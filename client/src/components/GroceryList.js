@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function GroceryContainer() {
+function GroceryContainer(props) {
     const [grocery, setGrocery] = useState([]);
     const [hasGroceries, setHasGroceries] = useState(true);
 
@@ -39,6 +39,8 @@ function GroceryContainer() {
         });
     }
 
+    
+
     function createGrocery(event) {
         event.preventDefault();
 
@@ -48,7 +50,7 @@ function GroceryContainer() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                item: grocery
+                grocery: props.grocery
             })
         }).then(() => {
             setGrocery([]);
@@ -58,6 +60,9 @@ function GroceryContainer() {
     function inputCallback(event) {
         setGrocery(event.target.value);
     }
+
+    
+
 
 
     return (
@@ -71,7 +76,7 @@ function GroceryContainer() {
             <ul className='groceryList'>{grocery.length ? (
                 grocery.map((grocery, i) => {
                     return (
-                        <li key={i}>
+                        <li key={i}>{grocery.item}
                             <button id='editButton' className='editButton'>Edit</button>
                             <button onClick={(event) => deleteGrocery(event, grocery, i)} id='deleteButton' className='deleteButton'>Delete</button>
                         </li>
