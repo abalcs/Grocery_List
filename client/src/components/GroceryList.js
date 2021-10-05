@@ -1,24 +1,44 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-// function GroceryContainer(props) {
-//     const [grocery, setGrocery] = useState([]);
-//     const [hasGroceries, setHasGroceries] = useState(true);
 
-    // useEffect(() => {
-    //     fetch('/api/groceries')
-    //     .then((res) => {
-    //         return res.json();
-    //     })
-    //         .then((data) => {
-    //             data.forEach((obj) => obj.edit = false);
 
-    //             setGrocery(data);
+function GroceryList(props) {
+    
+        useEffect(() => {
+        fetch('/api/groceries')
+        .then((res) => {
+            return res.json();
+        })
+            .then((data) => {
+                
+                // data.forEach((obj) => obj.edit = false);
+                console.log(data)
+                // data.map()
+                // props.setGroceries(data);
+                
+                // if (!data.length) {
+                //     props.setHasGroceries(false);
+                // }
+            });
+    }, []);
 
-    //             if (!data.length) {
-    //                 setHasGroceries(false);
-    //             }
-    //         });
-    // }, []);
+    return (
+        <div className='groceryContainer'>
+            <ul className='groceryList'>
+                <li>{props.groceries.item}</li>
+            </ul>
+        </div>
+    );
+}
+
+
+export default GroceryList;
+
+// function GroceryList(props) {
+    // const [groceries, setGroceries] = useState([]);
+    // const [hasGroceries, setHasGroceries] = useState(true);
+
+
 
 //     function deleteGrocery(event, job, i) {
 //         fetch('/api/groceries', {
@@ -38,22 +58,3 @@ import React from 'react';
 //             }
 //         });
 //     }
-
-
-function GroceryList(props) {
-    return (
-        <div className='groceryContainer'>
-            <ul className='groceryList'>{props.groceries.length ? (
-                props.groceries.map((grocery, i) => {
-                    return (
-                        <li key={i}>{grocery}</li>
-                    )
-                })
-            ) : <p>No items entered yet...</p>}
-                
-            </ul>
-        </div>
-    );
-}
-
-export default GroceryList;
