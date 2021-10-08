@@ -20,12 +20,12 @@ function FormContainer(props) {
     }
 
     return (
-        <div>
+        <main>
             <form onSubmit={createGrocery}> 
-                <input onChange={props.inputCallback} value={props.items} type="text" name="item" placeholder='Type grocery item here'></input><br></br>
-                <button>Submit</button>
+                <input onChange={props.inputCallback} value={props.items} type="text" name="item" placeholder='  What do you need ?'></input><br></br>
+                <button className='submitBtn'>ADD ITEM</button>
             </form>
-        </div>
+        </main>
     )
 
 }

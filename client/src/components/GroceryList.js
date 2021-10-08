@@ -39,20 +39,20 @@ function GroceryList() {
     }, []);
 
     return (
-        <div className='groceryContainer'>
+        <section    >
             <ul>
                 {groceries.length ? (
                     groceries.map((grocery, i) => {
                         return (
                             <li key={i}>
                                 {grocery.item}
-                                <button onClick={(event) => deleteGrocery(event, grocery, i)}>Delete</button>
+                                <button className='deleteBtn' onClick={(event) => deleteGrocery(event, grocery, i)}>Remove</button>
                             </li>
                         )
                     })
                 ) : hasGroceries ? <p>Loading...</p> : <p>No groceries currently saved.</p>}
             </ul>
-        </div>
+        </section>
     );
 };
 
