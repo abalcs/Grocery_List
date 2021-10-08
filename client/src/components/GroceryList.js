@@ -4,6 +4,25 @@ function GroceryList() {
     const [groceries, setGroceries] = useState([]);
     const [hasGroceries, setHasGroceries] = useState(true);
 
+    function deleteGrocery(event, grocery, i) {
+        fetch('/api/groceries', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                _id: grocery._id
+            })
+        }).then(res => {
+            groceries.splice(i, 1);
+            setGroceries([...groceries]);
+
+            if (!groceries.length) {
+                setHasGroceries(false);
+            }
+        });
+    }
+
     useEffect(() => {
         fetch('/api/groceries')
         .then((res) => {
@@ -19,25 +38,6 @@ function GroceryList() {
         })  
     }, []);
 
-    function deleteGrocery(event, job, i) {
-        fetch('/api/groceries', {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                _id: groceries.id
-            })
-        }).then(res => {
-            groceries.splice(i, 1);
-            setGroceries([...groceries]);
-
-            if (!groceries.length) {
-                setHasGroceries(false);
-            }
-        });
-    }
-
     return (
         <div className='groceryContainer'>
             <ul>
@@ -45,7 +45,8 @@ function GroceryList() {
                     groceries.map((grocery, i) => {
                         return (
                             <li key={i}>
-                                {grocery.item}<button onClick={deleteGrocery}>Delete</button>
+                                {grocery.item}
+                                <button onClick={(event) => deleteGrocery(event, grocery, i)}>Delete</button>
                             </li>
                         )
                     })
