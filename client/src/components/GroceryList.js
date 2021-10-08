@@ -1,31 +1,38 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
+function GroceryList() {
+    const [groceries, setGroceries] = useState([]);
+    const [hasGroceries, setHasGroceries] = useState(true);
 
-
-function GroceryList(props) {
-    
-        useEffect(() => {
+    useEffect(() => {
         fetch('/api/groceries')
         .then((res) => {
             return res.json();
         })
-            .then((data) => {
-                
-                // data.forEach((obj) => obj.edit = false);
-                console.log(data)
-                // data.map()
-                // props.setGroceries(data);
-                
-                // if (!data.length) {
-                //     props.setHasGroceries(false);
-                // }
-            });
+        .then((data) => {
+            data.forEach((obj) => obj.edit = false);
+            setGroceries(data);
+            console.log(data);
+
+            if(!data.length) {
+                setHasGroceries(false);
+            }
+        })  
     }, []);
+
 
     return (
         <div className='groceryContainer'>
-            <ul className='groceryList'>
-                <li>{props.groceries.item}</li>
+            <ul>
+                {groceries.length ? (
+                    groceries.map((grocery, i) => {
+                        return (
+                            <li key={i}>
+                            {grocery.item}
+                            </li>
+                        )
+                    })
+                ) : hasGroceries ? <p>Loading...</p> : <p>No groceries currently saved.</p>}
             </ul>
         </div>
     );
@@ -33,12 +40,6 @@ function GroceryList(props) {
 
 
 export default GroceryList;
-
-// function GroceryList(props) {
-    // const [groceries, setGroceries] = useState([]);
-    // const [hasGroceries, setHasGroceries] = useState(true);
-
-
 
 //     function deleteGrocery(event, job, i) {
 //         fetch('/api/groceries', {

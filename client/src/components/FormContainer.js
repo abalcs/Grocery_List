@@ -12,17 +12,17 @@ function FormContainer(props) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                item: props.groceries
+                item: props.items
             })
         }).then(() => {
-            props.setGroceries([]);
+            props.setItems([]);
         });
     }
 
     return (
         <div>
             <form onSubmit={createGrocery}> 
-                <input onChange={props.inputCallback} value={props.groceries} type="text" name="item" placeholder='Type grocery item here'></input><br></br>
+                <input onChange={props.inputCallback} value={props.items} type="text" name="item" placeholder='Type grocery item here'></input><br></br>
                 <button>Submit</button>
             </form>
         </div>

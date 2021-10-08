@@ -4,9 +4,8 @@ import GroceryList from './components/GroceryList';
 import Header from './components/Header';
 
 const App = () => {
-    const [groceries, setGroceries] = useState([]);
-    // const [item, setItem] = useState('')
-    const [setGrocery, setHasGroceries] = useState(false);
+    const [items, setItems] = useState([]);
+    // const [setGrocery, setHasGroceries] = useState(true);
 
     // function showList() {
 
@@ -23,15 +22,16 @@ const App = () => {
     //     setShowGroceries(!showGroceries);
     // }
 
+
     function inputCallback(event) {
-        setGroceries(event.target.value);
+        setItems(event.target.value);
     }
 
     return (
         <>
             <Header />
-            <FormContainer groceries={groceries} setGroceries={setGroceries} inputCallback={inputCallback} / >
-            <GroceryList groceries={groceries} setGroceries={setGroceries} setGrocery={setGrocery} setHasGroceries={setHasGroceries}/>
+            <FormContainer items={items} setItems={setItems} inputCallback={inputCallback} / >
+            <GroceryList />
         </>
     )
 }
