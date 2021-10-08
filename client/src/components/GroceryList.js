@@ -12,7 +12,6 @@ function GroceryList() {
         .then((data) => {
             data.forEach((obj) => obj.edit = false);
             setGroceries(data);
-            console.log(data);
 
             if(!data.length) {
                 setHasGroceries(false);
@@ -28,19 +27,19 @@ function GroceryList() {
                     groceries.map((grocery, i) => {
                         return (
                             <li key={i}>
-                            {grocery.item}
+                                {grocery.item}
                             </li>
+                            
                         )
                     })
                 ) : hasGroceries ? <p>Loading...</p> : <p>No groceries currently saved.</p>}
             </ul>
         </div>
     );
-}
-
+};
 
 export default GroceryList;
-
+ 
 //     function deleteGrocery(event, job, i) {
 //         fetch('/api/groceries', {
 //             method: 'DELETE',
