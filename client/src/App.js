@@ -12,9 +12,11 @@ const App = () => {
 
     return (
         <>
+        <div className='appBody'>
             <Header />
             <FormContainer items={items} setItems={setItems} inputCallback={inputCallback} / >
             <GroceryList />
+        </div> 
         </>
     )
 }

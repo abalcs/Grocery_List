@@ -7,8 +7,8 @@ import React from 'react';
 const Header = () => {
   return (
     <header>
-      <h1>Grocery List</h1>
-      <p>Date/Time</p>
+        <h1>Grocery List</h1>
+        <p>Date/Time</p>
     </header>
   );
 }
