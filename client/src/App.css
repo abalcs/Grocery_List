@@ -1,19 +1,11 @@
-* {
+html {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Patrick Hand', 'Lato', sans-serif;
-    background-color: rgb(194, 223, 233);
-}
-
-.appBody {
-    /* min-height: 90vh;
-    background-image: url('./img/background.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-     */
-     
+    /* background-color: rgb(194, 223, 233); */
+    background: rgb(196,255,214);
+    background: radial-gradient(circle, rgba(196,255,214,1) 0%, rgba(9,29,20,1) 100%);
 }
 
 header {

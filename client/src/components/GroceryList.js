@@ -36,7 +36,7 @@ function GroceryList() {
                 setHasGroceries(false);
             }
         })  
-    }, []);
+    }, [groceries]);
 
     return (
         <section    >
