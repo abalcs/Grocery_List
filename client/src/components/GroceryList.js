@@ -48,7 +48,7 @@ function GroceryList() {
         setGroceries([...groceries]);
     }
 
-    function closeGrocery(event, grocery) {
+    function closeEdit(event, grocery) {
 
         if(event.keyCode === 13) {
             grocery.edit = false;
@@ -75,7 +75,7 @@ function GroceryList() {
                     groceries.map((grocery, i) => {
                         return (
                             <li key={i}>
-                                {grocery.edit ? <input onKeyUp={((event) => closeGrocery(event, grocery))} onChange={(event) => editGrocery(event, grocery, i)} value={grocery.item} type='text' /> : grocery.item}
+                                {grocery.edit ? <input onKeyUp={((event) => closeEdit(event, grocery))} onChange={(event) => editGrocery(event, grocery, i)} value={grocery.item} type='text' /> : grocery.item}
                                 <button className='deleteBtn' onClick={(event) => deleteGrocery(event, grocery, i)}>Remove</button>
                                 <button className='editBtn' onClick={(event) => showEditGroceryInput(event, grocery, i)}>Edit</button>
                             </li>
