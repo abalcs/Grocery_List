@@ -47,6 +47,7 @@ function GroceryList() {
                             <li key={i}>
                                 {grocery.item}
                                 <button className='deleteBtn' onClick={(event) => deleteGrocery(event, grocery, i)}>Remove</button>
+                                <button className='editBtn'>Edit</button>
                             </li>
                         )
                     })
