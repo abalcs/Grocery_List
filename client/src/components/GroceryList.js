@@ -4,6 +4,21 @@ function GroceryList() {
     const [groceries, setGroceries] = useState([]);
     const [hasGroceries, setHasGroceries] = useState(true);
 
+    useEffect(() => {
+        fetch('/api/groceries')
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            data.forEach((obj) => obj.edit = false);
+            setGroceries(data);
+
+            if(!data.length) {
+                setHasGroceries(false);
+            }
+        })  
+    }, [groceries]);
+
     function deleteGrocery(event, grocery, i) {
         fetch('/api/groceries', {
             method: 'DELETE',
@@ -23,20 +38,35 @@ function GroceryList() {
         });
     }
 
-    useEffect(() => {
-        fetch('/api/groceries')
-        .then((res) => {
-            return res.json();
-        })
-        .then((data) => {
-            data.forEach((obj) => obj.edit = false);
-            setGroceries(data);
+    function showEditGroceryInput(event, grocery, i) {
+        grocery.edit = true;
+        setGroceries([...groceries]);
+    }
 
-            if(!data.length) {
-                setHasGroceries(false);
-            }
-        })  
-    }, [groceries]);
+    function editGrocery(event, grocery, i) {
+        grocery.item = event.target.value;
+        setGroceries([...groceries]);
+    }
+
+    function closeGrocery(event, grocery) {
+
+        if(event.keyCode === 13) {
+            grocery.edit = false;
+            setGroceries([...groceries])
+        }
+
+        fetch('/api/groceries', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                _id: grocery._id
+            })
+        }).then(() => {
+
+        })
+    }
 
     return (
         <section    >
@@ -45,9 +75,9 @@ function GroceryList() {
                     groceries.map((grocery, i) => {
                         return (
                             <li key={i}>
-                                {grocery.item}
+                                {grocery.edit ? <input onKeyUp={((event) => closeGrocery(event, grocery))} onChange={(event) => editGrocery(event, grocery, i)} value={grocery.item} type='text' /> : grocery.item}
                                 <button className='deleteBtn' onClick={(event) => deleteGrocery(event, grocery, i)}>Remove</button>
-                                <button className='editBtn'>Edit</button>
+                                <button className='editBtn' onClick={(event) => showEditGroceryInput(event, grocery, i)}>Edit</button>
                             </li>
                         )
                     })
