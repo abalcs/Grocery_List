@@ -83,7 +83,7 @@ function GroceryList() {
                             </li>
                         )
                     })
-                ) : hasGroceries ? <p>Loading...</p> : <p>No groceries currently saved.</p>}
+                ) : hasGroceries ? <p>Loading...</p> : <p className='emptyList'>No groceries currently saved.</p>}
             </ul>
         </section>
     );
