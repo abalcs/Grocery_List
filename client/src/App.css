@@ -3,15 +3,11 @@ html {
     margin: 0;
     padding: 0;
     font-family: 'Patrick Hand', 'Lato', sans-serif;
-    /* background-color: rgb(194, 223, 233); */
-    /* background: rgb(196,255,214);
-    background: radial-gradient(circle, rgba(196,255,214,1) 0%, rgba(9,29,20,1) 100%); */
     background: lightgray;
 }
 
 header {
     width: 100%;
-    margin-top: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,7 +28,7 @@ header p {
 main {
     display: flex;
     justify-content: center;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 main button {
@@ -44,11 +40,11 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 20rem;
 }
 
 input, .submitBtn {
-    width: 50%;
+    width: 100%;
 }
 
 input {
@@ -66,17 +62,22 @@ input {
     color: white;
 }
 
+.submitBtn:hover {
+    background-color: #7274f8;
+}
+
 section {
     display: flex;
     justify-content: center;
-    margin-top: 10%;
+    margin-top: 2%;
 }
 
 section ul {
-    width: 50%;
+    width: 20rem;
 }
 
 li {
+    display: flex;
     list-style: none;
     margin-top: 20px;
     font-weight: bold;
@@ -85,28 +86,46 @@ li {
     color: black;
 }
 
-.deleteBtn {
-    position: absolute;
-    right: 105px;
+.btnContainer {
+    width: 18rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 2rem;
+}
+
+.deleteBtn, .editBtn {
+    text-transform: uppercase;
     padding: 3px 10px;
-    border-radius: 5px;
+    border-radius: 3px;
     border: none;
     box-shadow: 3px 2px 3px 0px black;
-    color: white;
+    width: 5rem;
+    padding: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 2rem;
+}
+
+.submitBtn:hover, .deleteBtn:hover, .editBtn:hover {
+    cursor: pointer;
+}
+
+.deleteBtn {
     background-color: #d9534f;
+    color: white;
+}
+
+.deleteBtn:hover {
+    background-color: #ff615c;
+}
+
+.editBtn:hover {
+    background-color: #cfd13e;
 }
 
 .editBtn {
-    position: absolute;
-    right: 200px;
-    padding: 3px 25px;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 3px 2px 3px 0px black;
-    color: black;
     background-color: #eaec47;
+    color: black;
 }
 
-header h1 {
-    margin-top: 10px;
-}

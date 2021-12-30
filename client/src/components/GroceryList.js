@@ -76,8 +76,10 @@ function GroceryList() {
                         return (
                             <li key={i}>
                                 {grocery.edit ? <input onKeyUp={((event) => closeEdit(event, grocery))} onChange={(event) => editGrocery(event, grocery, i)} value={grocery.item} type='text' /> : grocery.item}
-                                <button className='deleteBtn' onClick={(event) => deleteGrocery(event, grocery, i)}>Remove</button>
-                                <button className='editBtn' onClick={(event) => showEditGroceryInput(event, grocery, i)}>Edit</button>
+                                <div className='btnContainer'>
+                                    <button className='editBtn' onClick={(event) => showEditGroceryInput(event, grocery, i)}>Edit</button> 
+                                    <button className='deleteBtn' onClick={(event) => deleteGrocery(event, grocery, i)}>Remove</button> 
+                                </div>
                             </li>
                         )
                     })

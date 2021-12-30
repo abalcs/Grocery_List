@@ -21,7 +21,7 @@ function FormContainer(props) {
 
     return (
         <main>
-            <form onSubmit={createGrocery}> 
+            <form className='inputForm' onSubmit={createGrocery}> 
                 <input onChange={props.inputCallback} value={props.items} type="text" name="item" placeholder='  What do you need ?'></input><br></br>
                 <button className='submitBtn'>ADD TO LIST</button>
             </form>
