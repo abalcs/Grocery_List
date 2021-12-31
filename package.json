@@ -2,7 +2,7 @@
   "name": "grocery_list",
   "version": "1.0.0",
   "description": "",
-  "main": "client/index.js",
+  "main": "index.js",
   "dependencies": {
     "concurrently": "^6.2.1"
   },
@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"cd server && node server.js\" \"cd client && npm run start\"",
-    "start": "node client/index.js"
+    "start": "node index.js"
   },
   "author": "Alan Balcom",
   "license": "MIT"
