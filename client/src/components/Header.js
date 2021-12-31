@@ -1,14 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import DayJS from 'react-dayjs';
 
 const Header = () => {
-  
-  let now
 
-  useEffect(() => {
-    now = new Date()
-  })
   
+  let now = new Date()
 
   return (
     <header>
