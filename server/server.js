@@ -10,8 +10,13 @@ const PORT = process.env.PORT || 3001;
 const app = express(); // instance = Object
 
 // Setup our server
-
-app.use(express.static(path.join(__dirname, 'client/build')));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('build'));
+  app.get('*', (req, res) => {
+    req.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
+  })
+}
+// app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
