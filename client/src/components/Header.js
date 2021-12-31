@@ -7,11 +7,13 @@ const Header = () => {
   let now = new Date()
 
   return (
+    <>
     <header>
         <h1>FAMILY GROCERY LIST</h1>
-        <p><DayJS className='dayJS' format='dddd MMMM D, YYYY'>{now}</DayJS></p>
+        <DayJS className='dayJS' format='dddd MMMM D, YYYY'>{now}</DayJS>
         <p className='dayJS'>Current Time: <DayJS className='dayJS' format='h:mm a'>{now}</DayJS></p>
     </header>
+    </>
   );
 }
 
