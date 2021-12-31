@@ -14,6 +14,7 @@ const app = express(); // instance = Object
 
 // Setup our server
 app.use('/api/groceries', createProxyMiddleware({ target: 'https://family-grocery-app.herokuapp.com/', changeOrigin: true }));
+app.listen(3001)
 
 if(process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
