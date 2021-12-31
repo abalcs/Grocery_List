@@ -1,9 +1,10 @@
 
-   
 const express = require('express');
 const path = require('path');
 const routes = require('./routes/api_routes');
 const db = require('./config/connection');
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
 // require('dotenv').config();
 // Heroku 
 const PORT = process.env.PORT || 3001;
@@ -12,7 +13,7 @@ const PORT = process.env.PORT || 3001;
 const app = express(); // instance = Object
 
 // Setup our server
-
+app.use('/api/groceries', createProxyMiddleware({ target: 'https://family-grocery-app.herokuapp.com/', changeOrigin: true }));
 
 if(process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
