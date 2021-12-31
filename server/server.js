@@ -18,6 +18,10 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/', (req, res) => {
+  res.send(`Hit homepage!`);
+})
+
 routes(app);
 
 db.once('open', () => {
