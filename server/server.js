@@ -4,7 +4,7 @@ const routes = require('./routes/api_routes');
 const db = require('./config/connection');
 // require('dotenv').config();
 // Heroku 
-const PORT = process.env.MONGODB_URI || 3001;
+const PORT = process.env.PORT || 3001;
 
 // express returns an Object
 const app = express(); // instance = Object
