@@ -3,9 +3,8 @@ import DayJS from 'react-dayjs';
 
 const Header = () => {
 
-  
   let now = new Date()
-
+  
   return (
     <>
     <header>
