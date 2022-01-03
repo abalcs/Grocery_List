@@ -6,7 +6,7 @@ function FormContainer(props) {
     function createGrocery(event) {
         event.preventDefault();
 
-        fetch('/api/groceries', {
+        fetch('api/groceries', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
