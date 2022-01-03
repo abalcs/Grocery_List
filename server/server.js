@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 routes(app);
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  res.sendFile(path.resolve('build/index.html'));
 })
 
 db.once('open', () => {
