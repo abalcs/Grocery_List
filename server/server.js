@@ -17,6 +17,7 @@ app.use('/', express.static(path.join(__dirname, 'client/build')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
 routes(app);
 
 db.once('open', () => {
