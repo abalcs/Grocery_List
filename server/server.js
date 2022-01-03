@@ -23,9 +23,9 @@ app.use(express.urlencoded({ extended: true }));
 
 routes(app);
 
-// app.get('/', (req, res) => {
-//   res.send("Hello World")
-// })
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/index.html"))
+})
 
 db.once('open', () => {
   // Start the Server
