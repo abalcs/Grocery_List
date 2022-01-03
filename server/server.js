@@ -23,9 +23,9 @@ app.use(express.urlencoded({ extended: true }));
 
 routes(app);
 
-app.get('/', (req, res) => {
-  res.send("Hello World")
-})
+// app.get('/', (req, res) => {
+//   res.send("Hello World")
+// })
 
 db.once('open', () => {
   // Start the Server
