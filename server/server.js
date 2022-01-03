@@ -3,6 +3,9 @@ const express = require('express');
 const path = require('path');
 const routes = require('./routes/api_routes');
 const db = require('./config/connection');
+// const cors = require('cors');
+
+// app.use(cors());
 // require('dotenv').config();
 // Heroku 
 const PORT = process.env.PORT || 3001;
@@ -19,6 +22,10 @@ app.use(express.urlencoded({ extended: true }));
 
 
 routes(app);
+
+app.get('/', (req, res) => {
+  res.send("Hello World")
+})
 
 db.once('open', () => {
   // Start the Server
