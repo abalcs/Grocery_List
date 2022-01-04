@@ -13,13 +13,13 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(246, 246, 246);
+    background-color: rgb(58, 58, 58);
+    color:rgb(230, 230, 230);
     z-index: 1;
 }
 
 header h1 {
     font-size: 4rem;
-    background-color: rgb(246, 246, 246);
 }
 
 header p {
