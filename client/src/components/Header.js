@@ -9,7 +9,7 @@ const Header = () => {
     <>
     <header>
         <h1>FAMILY GROCERY LIST</h1>
-        <DayJS className='dayJS' format='dddd MMMM D, YYYY'>{now}</DayJS>
+        <span className='dayJS'><DayJS format='dddd MMMM D, YYYY'>{now}</DayJS></span>
         <p className='dayJS'>Current Time: <DayJS className='dayJS' format='h:mm a'>{now}</DayJS></p>
     </header>
     </>

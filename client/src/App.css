@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     font-family: 'Patrick Hand', 'Lato', sans-serif;
-    background: white;
 }
 
 header {
@@ -15,6 +14,7 @@ header {
     align-items: center;
     flex-direction: column;
     background-color: rgb(246, 246, 246);
+    z-index: 1;
 }
 
 header h1 {
@@ -24,11 +24,10 @@ header h1 {
 
 header p {
     font-size: 1.5rem;
-    padding-bottom: 1rem;
+    padding-bottom: .5rem;
 }
 
-.dayJS {
-    background-color: rgb(246, 246, 246);
+DayJS {
     font-size: 1.5rem;
     padding-bottom: 1rem;
 }
@@ -36,7 +35,8 @@ header p {
 main {
     display: flex;
     justify-content: center;
-    padding-top: 5%;
+    margin-top: 3%;
+    height: 12vh;
 }
 
 main button {
@@ -49,6 +49,7 @@ form {
     flex-direction: column;
     align-items: center;
     width: 20rem;
+    height: 15vh;
 }
 
 input, .submitBtn {
@@ -77,8 +78,8 @@ input {
 section {
     display: flex;
     justify-content: center;
-    padding-top: 2%;
-    min-height: 28rem;
+    /* padding-top: 2%; */
+    position: 30vh;
 }
 
 section ul {
@@ -100,17 +101,16 @@ li {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding-right: 2rem;
+    
 }
 
 .deleteBtn, .editBtn {
     text-transform: uppercase;
-    padding: 3px 10px;
     border-radius: 3px;
     border: none;
     box-shadow: 3px 2px 3px 0px black;
-    width: 5rem;
-    padding: 5px;
+    width: 6rem;
+    /* padding: 5px; */
     margin-left: 5px;
     margin-right: 5px;
     height: 2rem;
@@ -151,13 +151,55 @@ li {
 }
 
 footer {
-    background-color: rgb(246, 246, 246);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     position: sticky;
     bottom: 0;
+    background-color: rgb(246, 246, 246);
+    /* display: flex;
+    justify-content: center; */
     margin-top: 3rem;
     width: 100%;
     height: 5rem; 
 }
+
+footer h4, footer p {
+    text-align: center;
+    width: 100%;
+    padding-top: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    main {
+        margin-top: 2.5rem;
+    }
+
+    input, .submitBtn {
+        max-width: 235px;
+    }
+
+
+    ul {
+        padding-top: 2rem;
+    }
+
+    ul li{
+       padding-left: 3rem;
+    }
+
+    .btnContainer {
+        padding-right: 2.5rem;
+    }
+
+    .editBtn, .deleteBtn {
+        max-width: 4rem;
+        max-height: 2rem;
+    }
+};

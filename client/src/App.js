@@ -12,7 +12,7 @@ const App = () => {
     }
 
     return (
-        <div className='appBody'>
+        <div className='app'>
             <Header />
             <FormContainer items={items} setItems={setItems} inputCallback={inputCallback} / >
             <GroceryList />
