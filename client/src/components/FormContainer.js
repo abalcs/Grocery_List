@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function FormContainer(props) {
 
     function createGrocery(event) {
@@ -20,12 +19,12 @@ function FormContainer(props) {
     }
 
     return (
-        <main>
-            <form className='inputForm' onSubmit={createGrocery}> 
-                <input onChange={props.inputCallback} value={props.items} type="text" name="item" placeholder='  What do you need ?'></input><br></br>
-                <button className='submitBtn'>ADD TO LIST</button>
+        <div className='d-flex justify-content-center p-3'>
+            <form className='d-flex flex-column justify-content-center align-items-center inputForm pt-4' onSubmit={createGrocery}> 
+                <input className='input' onChange={props.inputCallback} value={props.items} type="text" name="item" placeholder='  What do you need ?'></input><br></br>
+                <button className='p-2 text-light bg-primary submitBtn'>ADD TO LIST</button>
             </form>
-        </main>
+        </div>
     )
 
 }

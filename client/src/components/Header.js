@@ -6,13 +6,11 @@ const Header = () => {
   let now = new Date()
   
   return (
-    <>
-    <header>
-        <h1>FAMILY GROCERY LIST</h1>
-        <span className='dayJS'><DayJS format='dddd MMMM D, YYYY'>{now}</DayJS></span>
-        <p className='dayJS'>Current Time: <DayJS className='dayJS' format='h:mm a'>{now}</DayJS></p>
+    <header className='d-flex flex-column align-items-center p-3 bg-dark text-light'>
+        <h1>TASKLIST MANAGER</h1>
+        <p className='dayJS date'><DayJS format='dddd MMMM D, YYYY'>{now}</DayJS></p>
+        <p className='dayJS time'>Current Time: <DayJS className='dayJS' format='h:mm a'>{now}</DayJS></p>
     </header>
-    </>
   );
 }
 

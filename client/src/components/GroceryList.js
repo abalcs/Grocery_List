@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Spinner from 'react-bootstrap/Spinner'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Card from 'react-bootstrap/Card'
 
 function GroceryList() {
     const [groceries, setGroceries] = useState([]);
@@ -49,11 +52,12 @@ function GroceryList() {
     }
 
     function closeEdit(event, grocery) {
-
         if(event.keyCode === 13) {
             grocery.edit = false;
             setGroceries([...groceries])
         }
+
+        //update the put req. to console.log the error
 
         fetch('/api/groceries', {
             method: 'PUT',
@@ -64,26 +68,31 @@ function GroceryList() {
                 _id: grocery._id
             })
         }).then(() => {
-
+            setGroceries([...groceries]);
         })
     }
 
+    // F45F02 comp color hex
+
     return (
-        <section    >
+        <section className='d-flex justify-content-center'>
             <ul>
                 {groceries.length ? (
                     groceries.map((grocery, i) => {
                         return (
-                            <li key={i}>
-                                {grocery.edit ? <input onKeyUp={((event) => closeEdit(event, grocery))} onChange={(event) => editGrocery(event, grocery, i)} value={grocery.item} type='text' /> : grocery.item}
-                                <div className='btnContainer'>
-                                    <button className='editBtn' onClick={(event) => showEditGroceryInput(event, grocery, i)}>Edit</button> 
-                                    <button className='deleteBtn' onClick={(event) => deleteGrocery(event, grocery, i)}>Remove</button> 
-                                </div>
-                            </li>
+                                <Card className='mt-3 bg-dark card' style={{width: '14rem'}} key={i}>
+                                    <Card.Text className='text-center bg-dark text-light p-1 grocery'>
+                                        {grocery.edit ? <input onKeyUp={((event) => closeEdit(event, grocery))} onChange={(event) => editGrocery(event, grocery, i)} value={grocery.item} type='text' /> : grocery.item}
+                                    </Card.Text>
+                                    
+                                    <div className='d-flex justify-content-center btnContainer'>
+                                        <button className='editBtn bg-warning text-dark' onClick={(event) => showEditGroceryInput(event, grocery, i)}>EDIT</button> 
+                                        <button className='deleteBtn bg-danger text-light' onClick={(event) => deleteGrocery(event, grocery, i)}>REMOVE</button> 
+                                    </div>
+                                </Card>
                         )
                     })
-                ) : hasGroceries ? <p>Loading...</p> : <p className='emptyList'>No groceries currently saved...</p>}
+                ) : hasGroceries ? <p>Loading...</p> : <Spinner animation='border' role='status'></Spinner>}
             </ul>
         </section>
     );

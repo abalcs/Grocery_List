@@ -17,7 +17,7 @@ const App = () => {
             <FormContainer items={items} setItems={setItems} inputCallback={inputCallback} / >
             <GroceryList />
             <Footer />
-        </div> 
+        </div>
     )
 }
 
