@@ -92,7 +92,7 @@ function GroceryList() {
                                 </Card>
                         )
                     })
-                ) : hasGroceries ? <p>Loading...</p> : <Spinner animation='border' role='status'></Spinner>}
+                ) : hasGroceries ? <p>Loading...</p> : <div className='d-flex flex-column align-items-center'><Spinner className='mt-4' animation='border' role='status'></Spinner><p className='mt-3 text-danger'>waiting to add new items...</p></div>}
             </ul>
         </section>
     );
