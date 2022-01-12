@@ -17,8 +17,21 @@ header h1 {
     margin-bottom: -2px !important;
 }
 
+.itemCount {
+    font-size: 2rem !important;
+    text-transform: uppercase !important;
+}
+
+.line {
+    height: 2px !important;
+    background-color: white !important;
+    width: 7rem;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
 .inputForm {
-    width: 200px;
+    width: 220px;
 }
 
 input {
@@ -28,15 +41,18 @@ input {
 }
 
 .submitBtn {
-    background-color: #F45F02;
+    background-color: lightgray;
     border: none;
     border-radius: 5px;
     box-shadow: 3px 3px 8px 0px black;
     width: 100%;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-around;
 }
 
 .submitBtn:hover {
-    background-color: #c74d01;
+    background-color: darkgrey;
     transition: all ease-in-out 250ms;
     transform: scale(1.05);
 }
@@ -48,7 +64,7 @@ input {
 }
 
 .card {
-    box-shadow: black 6px 5px 8px 0px;
+    box-shadow: gray 6px 5px 8px 0px;
     animation: fadeIn;
     transition: all ease-in-out 250ms;
 }
@@ -81,4 +97,18 @@ input {
 .linkedIn:hover, .github:hover, .email:hover {
     transform: scale(1.05);
     transition: all ease-in-out 250ms;
+}
+
+@media screen and (max-width: 500px){
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem !important;
+    }
+
+    .itemCount {
+        font-size: 1rem !important;
+    }
 }

@@ -69,10 +69,10 @@ function GroceryList() {
             })
         }).then(() => {
             setGroceries([...groceries]);
-        })
-    }
+        });
 
-    // F45F02 comp color hex
+        
+    }
 
     return (
         <section className='d-flex justify-content-center'>
@@ -80,6 +80,7 @@ function GroceryList() {
                 {groceries.length ? (
                     groceries.map((grocery, i) => {
                         return (
+                            <>
                                 <Card className='mt-3 bg-dark card' style={{width: '14rem'}} key={i}>
                                     <Card.Text className='text-center bg-dark text-light p-1 grocery'>
                                         {grocery.edit ? <input onKeyUp={((event) => closeEdit(event, grocery))} onChange={(event) => editGrocery(event, grocery, i)} value={grocery.item} type='text' /> : grocery.item}
@@ -90,9 +91,11 @@ function GroceryList() {
                                         <button className='deleteBtn bg-danger text-light' onClick={(event) => deleteGrocery(event, grocery, i)}>REMOVE</button> 
                                     </div>
                                 </Card>
+                            </>
                         )
                     })
-                ) : hasGroceries ? <p>Loading...</p> : <div className='d-flex flex-column align-items-center'><Spinner className='mt-4' animation='border' role='status'></Spinner><p className='mt-3 text-danger'>waiting to add new items...</p></div>}
+                ) : hasGroceries ? <div className='d-flex flex-column align-items-center'><Spinner className='mt-4 mb-3' animation='border' role='status'></Spinner><p className='text-danger'>Retrieving List...</p></div> 
+                : <p className='mt-3 text-primary'>waiting to add new items...</p>}
             </ul>
         </section>
     );
