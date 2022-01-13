@@ -42,7 +42,9 @@ function GroceryList() {
     }
 
     function showEditGroceryInput(event, grocery, i) {
+        event.preventDefault();
         grocery.edit = true;
+        console.log(grocery)
         setGroceries([...groceries]);
     }
 
@@ -69,9 +71,7 @@ function GroceryList() {
             })
         }).then(() => {
             setGroceries([...groceries]);
-        });
-
-        
+        }); 
     }
 
     return (
