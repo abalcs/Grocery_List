@@ -16,6 +16,9 @@ This app was built with a React front end, MongoDB Database, and Node.js/Express
 
 [Link to Deployed App](https://www.family-grocery-app.herokuapp.com/)
 
+If link won't launch
+- https://family-grocery-app.herokuapp.com
+
 ## Usage:
 This app allows the user to retrieve, add, edit, and delete items in their list.  Just type your item into the input box provided and add it to your list.  From there you can delete it when you've bought it, or update an item name if you wish to make a change.
 
