@@ -14,9 +14,7 @@ This app was built with a React front end, MongoDB Database, and Node.js/Express
 
 ![Grocery-List-App](grocery.jpg)
 
-[Link to Deployed App](https://www.family-grocery-app.herokuapp.com/)
-
-If link won't launch
+Link to Deployed App
 - https://family-grocery-app.herokuapp.com
 
 ## Usage:
