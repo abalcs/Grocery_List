@@ -10,20 +10,20 @@
 - [Refereces](#references)
 
 ## Description:
-This app was built using the MERN stack with a React front end, MongoDB Database, and Node.js/Express.js server and a custom built API. 
+This app was built with a React front end, MongoDB Database, and Node.js/Express.js server. 
 
-![Grocery-List-App](grocery.png)
+![Grocery-List-App](grocery.jpg)
 
-[Link to Deployed App]()
+[Link to Deployed App](https://www.family-grocery-app.herokuapp.com)
 
 ## Usage:
-This app allows the user to retrieve, add, edit, and delete their grocery list.  Just type your item into the input box provided and add it to your list.  From there you can delete it when you've bought it, or update an item name if you wish to make a change.
+This app allows the user to retrieve, add, edit, and delete items in their list.  Just type your item into the input box provided and add it to your list.  From there you can delete it when you've bought it, or update an item name if you wish to make a change.
 
 ## Contributing:
-Contributions welcomed! Please submit a pull request.
+Contributions welcomed. Please submit a pull request.
 
 ## Issues:
--  Edit button works but is glitchy when clicked. 
+-  Edit button is glitchy. 
 
 ## License:
 For more information about the License, click on the link below.
