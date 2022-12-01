@@ -3,7 +3,7 @@ import Spinner from 'react-bootstrap/Spinner'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Card from 'react-bootstrap/Card'
 
-function GroceryList(props) {
+function GroceryList() {
     const [groceries, setGroceries] = useState([]);
     const [hasGroceries, setHasGroceries] = useState(true);
 
@@ -74,8 +74,6 @@ function GroceryList(props) {
         getAll();
     }, []);
 
-    const data = useMemo(() => groceries, [groceries]);
-    // console.log(data)
 
     return (
         <section className='d-flex justify-content-center'>
