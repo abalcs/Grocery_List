@@ -23,9 +23,9 @@ function routeCreate(app) {
     });
 
     app.put('/api/groceries', (req, res) => {
-        Grocery.findOneAndReplace(req.body)
+        Grocery.findOneAndUpdate({_id: req.body._id}, {item: req.body.item})
         .then(() => {
-            res.status(200).send('Replaced')
+            res.status(200).send('Updated')
         })
     });
 }

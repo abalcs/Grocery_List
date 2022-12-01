@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FormContainer from './components/FormContainer';
 import GroceryList from './components/GroceryList';
 import Header from './components/Header';
@@ -12,13 +12,14 @@ const App = () => {
     }
 
     return (
-        <div className='app'>
+        <>
             <Header />
             <FormContainer items={items} setItems={setItems} inputCallback={inputCallback} / >
-            <GroceryList />
+                {!items.length && (<GroceryList />)}
+                {items.length && (<GroceryList />)}
             <Footer />
-        </div>
+        </>
     )
-}
+};
 
 export default App;

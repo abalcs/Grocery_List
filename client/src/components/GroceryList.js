@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import Spinner from 'react-bootstrap/Spinner'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Card from 'react-bootstrap/Card'
 
-function GroceryList() {
+function GroceryList(props) {
     const [groceries, setGroceries] = useState([]);
     const [hasGroceries, setHasGroceries] = useState(true);
 
-    useEffect(() => {
+    const getAll = () => {
         fetch('/api/groceries')
         .then((res) => {
             return res.json();
@@ -20,7 +20,7 @@ function GroceryList() {
                 setHasGroceries(false);
             }
         })  
-    }, [groceries]);
+    };
 
     function deleteGrocery(event, grocery, i) {
         fetch('/api/groceries', {
@@ -42,9 +42,7 @@ function GroceryList() {
     }
 
     function showEditGroceryInput(event, grocery, i) {
-        event.preventDefault();
         grocery.edit = true;
-        console.log(grocery)
         setGroceries([...groceries]);
     }
 
@@ -55,11 +53,6 @@ function GroceryList() {
 
     function closeEdit(event, grocery) {
         if(event.keyCode === 13) {
-            grocery.edit = false;
-            setGroceries([...groceries])
-        }
-
-        //update the put req. to console.log the error
 
         fetch('/api/groceries', {
             method: 'PUT',
@@ -67,23 +60,34 @@ function GroceryList() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                _id: grocery._id
+                _id: grocery._id,
+                item: grocery.item
             })
         }).then(() => {
             setGroceries([...groceries]);
         }); 
-    }
+
+        grocery.edit = false;
+    }}
+
+    useEffect(() => {
+        getAll();
+    }, []);
+
+    const data = useMemo(() => groceries, [groceries]);
+    // console.log(data)
 
     return (
         <section className='d-flex justify-content-center'>
             <ul>
-                {groceries.length ? (
+                {groceries ? (
                     groceries.map((grocery, i) => {
                         return (
                             <>
                                 <Card className='mt-3 bg-dark card' style={{width: '14rem'}} key={i}>
                                     <Card.Text className='text-center bg-dark text-light p-1 grocery'>
-                                        {grocery.edit ? <input onKeyUp={((event) => closeEdit(event, grocery))} onChange={(event) => editGrocery(event, grocery, i)} value={grocery.item} type='text' /> : grocery.item}
+                                        {grocery.edit ? <input onKeyDown={((event) => closeEdit(event, grocery))} onChange={(event) => editGrocery(event, grocery, i)} value={grocery.item} type='text' />
+                                         : grocery.item}
                                     </Card.Text>
                                     
                                     <div className='d-flex justify-content-center btnContainer'>
