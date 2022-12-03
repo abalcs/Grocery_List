@@ -14,9 +14,9 @@ const App = () => {
     return (
         <>
             <Header />
-            <FormContainer items={items} setItems={setItems} inputCallback={inputCallback} / >
-                {!items.length && (<GroceryList />)}
-                {items.length && (<GroceryList />)}
+            <FormContainer items={items} setItems={setItems} inputCallback={inputCallback} />
+            {!items.length && <GroceryList />}
+            {!!items.length && <GroceryList />}
             <Footer />
         </>
     )
