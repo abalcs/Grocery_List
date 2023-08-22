@@ -40,15 +40,15 @@ input {
     background-color: rgb(240, 240, 240);
 }
 
-.submitBtn {
-    background-color: lightgray;
+.addItem {
+    background-color: white;
     border: none;
-    border-radius: 5px;
-    box-shadow: 3px 3px 8px 0px black;
-    width: 100%;
-    font-size: 1.2rem;
-    display: flex;
-    justify-content: space-around;
+    transition: 500ms;
+}
+
+.addItem:hover {
+    rotate: 90deg;
+    transition: 500ms;
 }
 
 .submitBtn:hover {
@@ -74,32 +74,36 @@ input {
     transition: all ease-in-out 250ms;
 }
 
-.grocery {
-    font-size: 1.15rem;
+p {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    transition: 2s;
 }
 
 .editBtn, .deleteBtn {
-    width: 50%;
-    margin-top: -16px;
+    transition: 300ms;
 }
 
 .editBtn:hover, .deleteBtn:hover {
-    transform: scale(1.03);
-    transition: all ease-in-out 250ms;
+    transform: scale(1.25);
+    transition: 300ms;
+    cursor: pointer;
 }
 
 .linkedIn, .github, .email {
     margin-left: 1rem;
     margin-right: 1rem;
     margin-top: 2rem;
+    transition: 250ms;
 }
 
 .linkedIn:hover, .github:hover, .email:hover {
-    transform: scale(1.05);
-    transition: all ease-in-out 250ms;
+    transform: scale(1.25);
+    transition: 500ms;
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 250px){
     header h1 {
         font-size: 2rem;
     }

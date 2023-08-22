@@ -3,6 +3,8 @@ import Spinner from 'react-bootstrap/Spinner'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Card from 'react-bootstrap/Card'
 
+import { BsTrash, BsPencil } from 'react-icons/bs';
+
 function GroceryList() {
     const [groceries, setGroceries] = useState([]);
     const [hasGroceries, setHasGroceries] = useState(true);
@@ -80,17 +82,17 @@ function GroceryList() {
                 {groceries ? (
                     groceries.map((grocery, i) => {
                         return (
-                                <Card className='mt-3 bg-dark card' style={{width: '14rem'}} key={i}>
-                                    <Card.Text className='text-center bg-dark text-light p-1 grocery'>
+                                <div style={{maxWidth: '250px'}} className='d-flex justify-content-between align-items-center text-wrap' key={i}>           
+                                    <div className='mt-3'>
                                         {grocery.edit ? <input onKeyDown={((event) => closeEdit(event, grocery))} onChange={(event) => editGrocery(event, grocery, i)} value={grocery.item} type='text' />
-                                         : grocery.item}
-                                    </Card.Text>
-                                    
-                                    <div className='d-flex justify-content-center btnContainer'>
-                                        <button className='editBtn bg-warning text-dark' onClick={(event) => showEditGroceryInput(event, grocery, i)}>EDIT</button> 
-                                        <button className='deleteBtn bg-danger text-light' onClick={(event) => deleteGrocery(event, grocery, i)}>REMOVE</button> 
+                                        : <p>{grocery.item}</p>}
                                     </div>
-                                </Card>
+                                    
+                                    <div className='d-flex justify-content-end' style={{width: '125px'}}>
+                                        <BsPencil className='editBtn mx-3' color='orange' size='20px' onClick={(event) => showEditGroceryInput(event, grocery, i)}>EDIT</BsPencil> 
+                                        <BsTrash className='deleteBtn' color='blue' size='20px' onClick={(event) => deleteGrocery(event, grocery, i)}>REMOVE</BsTrash> 
+                                    </div>
+                                </div>
                             )
                         })
                     ): hasGroceries ? 
@@ -105,5 +107,3 @@ function GroceryList() {
 };
 
 export default GroceryList;
- 
-
