@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import DayJS from 'react-dayjs';
+import GroceryList from './GroceryList';
+import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = (props) => {
 
   let [itemCount, setItemCount] = useState([]);
 
@@ -27,9 +29,9 @@ const Header = () => {
         <p className='dayJS time'>Current Time: <DayJS className='dayJS' format='h:mm a'>{now}</DayJS></p>
         
         <div className='d-flex'>
-        <button className='mx-2 p-2'>GROCERIES: {itemCount.length}</button>
-        <button className='mx-2 p-2'>TARGET</button>
-        <button className='mx-2 p-2'>GENERAL</button>
+        <button className='mx-2 p-2'><Link to='/'>GROCERIES: {itemCount.length}</Link></button>
+        <button className='mx-2 p-2'><Link to='/target'>TARGET</Link></button>
+        <button className='mx-2 p-2'><Link to='/general'>GENERAL</Link></button>
         </div>
         
 

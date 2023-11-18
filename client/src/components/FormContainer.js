@@ -19,6 +19,22 @@ function FormContainer(props) {
         });
     }
 
+    function createTargetItem(event) {
+        event.preventDefault();
+
+        fetch('api/target', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                item: props.items
+            })
+        }).then(() => {
+            props.setItems([]);
+        });
+    }
+
     return (
         <div className='d-flex justify-content-center'>
             <form 

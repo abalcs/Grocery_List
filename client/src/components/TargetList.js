@@ -6,77 +6,77 @@ import Card from 'react-bootstrap/Card'
 import { BsTrash, BsPencil } from 'react-icons/bs';
 import FormContainer from './FormContainer';
 
-function GroceryList() {
-    const [groceries, setGroceries] = useState([]);
-    const [hasGroceries, setHasGroceries] = useState(true);
+function TargetList() {
+    const [targetItems, setTargetItems] = useState([]);
+    const [hasTargetItems, setHasTargetItems] = useState(true);
 
     const [items, setItems] = useState([]);
-   
+
     function inputCallback(event) {
-        setItems(event.target.value);
+        setTargetItems(event.target.value);
     }
 
     const getAll = () => {
-        fetch('/api/groceries')
+        fetch('/api/target') //need new api for target items
         .then((res) => {
             return res.json();
         })
         .then((data) => {
             data.forEach((obj) => obj.edit = false);
-            setGroceries(data);
+            setTargetItems(data);
 
             if(!data.length) {
-                setHasGroceries(false);
+                setHasTargetItems(false);
             }
         })  
     };
 
-    function deleteGrocery(event, grocery, i) {
-        fetch('/api/groceries', {
+    function deleteTargetItem(event, target, i) {
+        fetch('/api/target', { //update w/ new api
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                _id: grocery._id
+                _id: target._id
             })
         }).then(res => {
-            groceries.splice(i, 1);
-            setGroceries([...groceries]);
+            targetItems.splice(i, 1);
+            setTargetItems([...targetItems]);
 
-            if (!groceries.length) {
-                setHasGroceries(false);
+            if (!targetItems.length) {
+                setHasTargetItems(false);
             }
         });
     }
 
-    function showEditGroceryInput(event, grocery, i) {
-        grocery.edit = true;
-        setGroceries([...groceries]);
+    function showEditItemInput(event, item, i) {
+        item.edit = true;
+        setTargetItems([...targetItems]);
     }
 
-    function editGrocery(event, grocery, i) {
-        grocery.item = event.target.value;
-        setGroceries([...groceries]);
+    function editItem(event, item, i) {
+        item.item = event.target.value;
+        setTargetItems([...targetItems]);
     }
 
-    function closeEdit(event, grocery) {
+    function closeEdit(event, item) {
         if(event.keyCode === 13) {
 
-        fetch('/api/groceries', {
+        fetch('/api/target', { //update w/ new api
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                _id: grocery._id,
-                item: grocery.item
+                _id: item._id,
+                item: item.item
             })
         }).then(() => {
-            setGroceries([...groceries]);
+            setTargetItems([...targetItems]);
         }); 
 
-        grocery.edit = false;
+        item.edit = false;
     }}
 
     useEffect(() => {
@@ -88,23 +88,23 @@ function GroceryList() {
         <FormContainer items={items} setItems={setItems} inputCallback={inputCallback} />
         <section className='d-flex justify-content-center'>
             <ul>
-                {groceries ? (
-                    groceries.map((grocery, i) => {
+                {targetItems ? (
+                    targetItems.map((item, i) => {
                         return (
                                 <div style={{maxWidth: '250px'}} className='d-flex justify-content-between align-items-center text-wrap' key={i}>           
                                     <div className='mt-3'>
-                                        {grocery.edit ? <input onKeyDown={((event) => closeEdit(event, grocery))} onChange={(event) => editGrocery(event, grocery, i)} value={grocery.item} type='text' />
-                                        : <p>{grocery.item}</p>}
+                                        {item.edit ? <input onKeyDown={((event) => closeEdit(event, item))} onChange={(event) => editItem(event, item, i)} value={item.item} type='text' />
+                                        : <p>{item.item}</p>}
                                     </div>
                                     
                                     <div className='d-flex justify-content-end' style={{width: '125px'}}>
-                                        <BsPencil className='editBtn mx-3' color='orange' size='20px' onClick={(event) => showEditGroceryInput(event, grocery, i)}>EDIT</BsPencil> 
-                                        <BsTrash className='deleteBtn' color='blue' size='20px' onClick={(event) => deleteGrocery(event, grocery, i)}>REMOVE</BsTrash> 
+                                        <BsPencil className='editBtn mx-3' color='orange' size='20px' onClick={(event) => showEditItemInput(event, item, i)}>EDIT</BsPencil> 
+                                        <BsTrash className='deleteBtn' color='blue' size='20px' onClick={(event) => deleteTargetItem(event, item, i)}>REMOVE</BsTrash> 
                                     </div>
                                 </div>
                             )
                         })
-                    ): hasGroceries ? 
+                    ): hasTargetItems ? 
                     <div className='d-flex flex-column align-items-center'>
                         <Spinner className='mt-4 mb-3' animation='border' role='status'></Spinner>
                         <p className='text-danger'>Retrieving List...</p>
@@ -116,4 +116,4 @@ function GroceryList() {
     );
 };
 
-export default GroceryList;
+export default TargetList;
